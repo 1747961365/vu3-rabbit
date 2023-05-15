@@ -3,10 +3,16 @@
 </script>
 
 <template>
-  
+  <div class="div">
+    test scss
+  </div>
 <RouterView />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+
+.div {
+    color:$priceColor;
+}
 
 </style>
