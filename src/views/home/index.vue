@@ -15,5 +15,4 @@ import HomePanel from './components/HomePanel.vue'
   <HomeNew />
   <HomeHot />
   <homeProduct />
-  <HomePanel> </HomePanel>
 </template>
