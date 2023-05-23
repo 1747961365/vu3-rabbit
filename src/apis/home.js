@@ -1,8 +1,12 @@
 import httpInstance from '@/utils/http'
 
-export function getBannerAPI() {
+export function getBannerAPI(param = {}) {
+  const { distributionSite = '1' } = param
   return httpInstance({
     url: '/home/banner',
+    params: {
+      distributionSite,
+    },
   })
 }
 
