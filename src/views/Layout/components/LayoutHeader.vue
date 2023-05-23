@@ -1,6 +1,5 @@
 <script setup>
 import { useCategoryStore } from '@/stores/category'
-import { onMounted, ref } from 'vue'
 
 const categoryStoe = useCategoryStore()
 </script>
