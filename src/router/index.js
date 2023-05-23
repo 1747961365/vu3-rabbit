@@ -13,20 +13,20 @@ const router = createRouter({
       children: [
         {
           path: '',
-          component:Home
+          component: Home,
         },
         {
-          path: 'category',
-          component:Category
-        }
-      ]
+          path: 'category/:id',
+          name: 'category',
+          component: Category,
+        },
+      ],
     },
     {
       path: '/login',
-      component:Login
-   }
-    
-  ]
+      component: Login,
+    },
+  ],
 })
 
 export default router
