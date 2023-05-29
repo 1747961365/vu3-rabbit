@@ -9,8 +9,8 @@ const imageList = [
   'https://yanxuan-item.nosdn.127.net/f881cfe7de9a576aaeea6ee0d1d24823.jpg',
 ]
 
+// 实现鼠标移入交互
 const curIndex = ref(0)
-
 const mouseEnterFn = (i) => (curIndex.value = i)
 </script>
 
