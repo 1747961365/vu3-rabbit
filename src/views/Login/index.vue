@@ -1,5 +1,28 @@
 <script setup>
+import {ref} from 'vue'
 
+const form = ref({
+  account: '',
+  password: ''
+})
+
+// 规则数据对象
+const rules = {
+  account: [
+    { required: true, message: '用户名不能为空' }
+  ],
+  password: [
+    { required: true, message: '密码不能为空' },
+    { min: 6, max: 24, message: '密码长度要求6-14个字符' }
+  ],
+  agree: [
+    {
+      validator: (rule, val, callback) => {
+        return val ? callback() : new Error('请先同意协议')
+      }
+    }
+  ]
+}
 </script>
 
 
@@ -24,20 +47,21 @@
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form label-position="right" label-width="60px"
+            <el-form v-model="form" :rules="rules" label-position="right"
+                     label-width="60px"
                      status-icon>
-              <el-form-item  label="账户">
-                <el-input/>
+              <el-form-item prop="account" label="账户">
+                <el-input v-model="form.account"/>
               </el-form-item>
-              <el-form-item label="密码">
-                <el-input/>
+              <el-form-item prop="password" label="密码">
+                <el-input v-model="form.password"/>
               </el-form-item>
               <el-form-item label-width="22px">
-                <el-checkbox  size="large">
+                <el-checkbox size="large">
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>
-              <el-button size="large" class="subBtn">点击登录</el-button>
+              <el-button class="subBtn" size="large">点击登录</el-button>
             </el-form>
           </div>
         </div>
@@ -61,7 +85,7 @@
   </div>
 </template>
 
-<style scoped lang='scss'>
+<style lang='scss' scoped>
 .login-header {
   background: #fff;
   border-bottom: 1px solid #e4e4e4;
@@ -157,7 +181,7 @@
       color: #999;
       display: inline-block;
 
-      ~a {
+      ~ a {
         border-left: 1px solid #ccc;
       }
     }
@@ -188,7 +212,7 @@
         position: relative;
         height: 36px;
 
-        >i {
+        > i {
           width: 34px;
           height: 34px;
           background: #cfcdcd;
@@ -233,7 +257,7 @@
         }
       }
 
-      >.error {
+      > .error {
         position: absolute;
         font-size: 12px;
         line-height: 28px;
