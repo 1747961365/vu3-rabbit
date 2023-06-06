@@ -1,5 +1,6 @@
 <script setup>
-
+import {useUserStore} from "@/stores/user"
+const userStore =useUserStore()
 </script>
 
 <template>
@@ -7,8 +8,8 @@
     <div class="container">
       <ul>
         <!--多模板渲染-->
-        <template v-if="false">
-          <li><a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a></li>
+        <template v-if="userStore.userInfo.token">
+          <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{userStore.userInfo.account}}</a></li>
           <li>
             <el-popconfirm cancel-button-text="取消" confirm-button-text="确认" title="确认退出吗?">
               <template #reference>
