@@ -1,7 +1,9 @@
 <script setup>
 import {useCartStroe} from "@/stores/cartStore";
 const cartStore =useCartStroe()
-const cartList = []
+const singleCheck =(i,selected) =>{
+  cartStore.singleCheck(i,selected)
+}
 </script>
 
 <template>
@@ -12,7 +14,7 @@ const cartList = []
           <thead>
           <tr>
             <th width="120">
-              <el-checkbox/>
+              <el-checkbox />
             </th>
             <th width="400">商品信息</th>
             <th width="220">单价</th>
@@ -25,7 +27,7 @@ const cartList = []
           <tbody>
           <tr v-for="i in cartStore.cartList" :key="i.id">
             <td>
-              <el-checkbox />
+              <el-checkbox :model-value="i.selected" @change="(selected)=>singleCheck(i,selected)"/>
             </td>
             <td>
               <div class="goods">
